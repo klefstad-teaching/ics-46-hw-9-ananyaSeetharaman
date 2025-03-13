@@ -132,6 +132,69 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     }
     return vector<string>();
 }
-void load_words(set<string> & word_list, const string& file_name);
-void print_word_ladder(const vector<string>& ladder);
-void verify_word_ladder();
+
+void load_words(set<string> & word_list, const string& file_name)
+{
+    ifstream file(file_name);
+
+    if (!file)
+    {
+        error(file_name, "", "Unable to open file");
+    }
+    string word;
+    while (file >> word)
+    {
+        transform(word.begin(), word.end(), word.begin(), ::tolower);
+        word_list.insert(word);
+    }
+    file.close();
+
+}
+
+void print_word_ladder(const vector<string>& ladder)
+{
+    if (ladder.empty())
+    {
+        cout << "No ladder found" << endl;
+        return;
+    }
+
+    for (int i = 0; i < ladder.size(), ++i)
+    {
+        cout << ladder[i];
+        if (i < ladder.size() - 1)
+        {
+            cout << "->";
+        }
+    }
+    cout << endl;
+}
+
+
+void verify_word_ladder()
+{
+    set<string> word_list;
+    load_words(word_list, "/home/agseetha/ics46/HW9/src/small.txt")
+
+    string begin_word, end_word;
+    cout << "Start word: "; 
+    cin >> begin_word;
+    cout << "End word: ";
+    cin >> end_word;
+
+    transform(begin_word.begin(), begin_word.end(), begin_word.begin(), ::tolower);
+    transform(end_word.begin(), end_word.end(), end_word.begin(), ::tolower); 
+
+    if (begin_word == end_word)
+    {
+        error(begin_word, end_word, "Start and end words must be different");
+    }
+
+    if (word_list.find(end_word) == word_list.end())
+    {
+        error(begin_word, end_word, "End word is not in the list");
+    }
+
+    vector<string> ladder = generate_word_ladder(begin_word, end_word, word_list);
+    print_word_ladder(ladder);
+}
