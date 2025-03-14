@@ -94,7 +94,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             temp[i] = original;
         }
 
-        for (int i = 0; i <= current.size(); ++i) 
+        for (size_t i = 0; i <= current.size(); ++i) 
         {
             for (char c = 'a'; c <= 'z'; ++c) 
             {
@@ -108,7 +108,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
 
-        for (int i = 0; i < current.size(); ++i) 
+        for (size_t i = 0; i < current.size(); ++i) 
         {
             string deleted = current.substr(0, i) + current.substr(i+1);
             if (word_list.count(deleted) && !visited.count(deleted)) 
@@ -156,7 +156,7 @@ void print_word_ladder(const vector<string>& ladder)
         return;
     }
     cout << "Word ladder found: ";
-    for (int i = 0; i < ladder.size(); ++i)
+    for (size_t i = 0; i < ladder.size(); ++i)
     {
         cout << ladder[i] << " ";
     }
