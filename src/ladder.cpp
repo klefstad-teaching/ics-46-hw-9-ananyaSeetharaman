@@ -60,40 +60,24 @@ bool is_adjacent(const string& word1, const string& word2)
 {
     //if (word1 == word2) {return 0;}
 
-    int n = word1.size();
-    int m = word2.size();
-
-    vector<vector<int>> dp(n + 1, vector<int>(m+1));
-
-    for (int i = 0; i <=n; ++i)
+    if (word1.length() != word2.length()) 
     {
-        dp[i][0] = i;
+        return false;
     }
 
-    for (int j = 0; j <= m; ++j)
+    int diff = 0;
+    for (size_t i = 0; i < word1.length(); ++i) 
     {
-        dp[0][j] = j;
-    }
-
-    for (int i = 1; i <= n; ++i)
-    {
-        for (int j = 1; j <= m; ++j)
+        if (tolower(word1[i]) != tolower(word2[i])) 
         {
-            char c1 = tolower(word1[i-1]);
-            char c2 = tolower(word2[j-1]);
-
-            if (c1 == c2)
+            diff++;
+            if (diff > 1) 
             {
-                dp[i][j] = dp[i-1][j-1];
-            }
-            else
-            {
-                dp[i][j] = 1 + min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
+                return false;
             }
         }
     }
-
-    return dp[n][m] <= 1;
+    return diff == 1;
 
 }
 
@@ -107,22 +91,22 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     set<string> visited;
     visited.insert(begin_word);
 
-    while(!ladder_queue.empty())
+    while (!ladder_queue.empty()) 
     {
         vector<string> ladder = ladder_queue.front();
         ladder_queue.pop();
         string last_word = ladder.back();
 
-        for (const string &word : word_list)
+        for (const string &word : word_list) 
         {
-            if (is_adjacent(last_word, word))
+            if (is_adjacent(last_word, word)) 
             {
-                if (visited.find(word) == visited.end())
+                if (visited.find(word) == visited.end()) 
                 {
                     visited.insert(word);
                     vector<string> new_ladder = ladder;
                     new_ladder.push_back(word);
-                    if (word == end_word)
+                    if (word == end_word) 
                     {
                         return new_ladder;
                     }
@@ -187,13 +171,13 @@ void verify_word_ladder()
     transform(begin_word.begin(), begin_word.end(), begin_word.begin(), ::tolower);
     transform(end_word.begin(), end_word.end(), end_word.begin(), ::tolower); 
 
-    if (begin_word == end_word)
+    if (begin_word == end_word) 
     {
         error(begin_word, end_word, "Start and end words must be different");
         return;
     }
 
-    if (word_list.find(end_word) == word_list.end())
+    if (word_list.find(end_word) == word_list.end()) 
     {
         error(begin_word, end_word, "End word is not in the list");
         return;
