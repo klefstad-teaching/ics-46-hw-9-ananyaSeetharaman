@@ -102,7 +102,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     queue<vector<string>> ladder_queue;
     vector<string> initial_ladder;
     initial_ladder.push_back(begin_word);
-    ladder_queue.push_back(initial_ladder);
+    ladder_queue.push(initial_ladder);
 
     set<string> visited;
     visited.insert(begin_word);
