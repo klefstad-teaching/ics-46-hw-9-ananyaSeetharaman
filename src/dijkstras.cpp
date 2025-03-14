@@ -4,6 +4,7 @@
 #include <queue>
 #include <limits>
 #include <stack>
+#include <algorithm>
 #include "dijkstras.h"
 
 using namespace std;
