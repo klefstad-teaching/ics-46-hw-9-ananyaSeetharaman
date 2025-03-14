@@ -81,7 +81,7 @@ void print_path(const vector<int>& v, int total)
         return;
     }
 
-    for (size_t i = 0; i < v.size(), ++i)
+    for (size_t i = 0; i < v.size(); ++i)
     {
         cout << v[i];
         if (i < v.size() - 1)
