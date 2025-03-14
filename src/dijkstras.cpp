@@ -44,7 +44,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         {
             int v = edge.dst;
             int weight = edge.weight;
-            if (!visited[u] && distance[u] + weight < distance[v])
+            if (!visited[v] && distance[u] + weight < distance[v])
             {
                 distance[v] = distance[u] + weight;
                 previous[v] = u;
