@@ -12,7 +12,7 @@ using namespace std;
 
 void error(string word1, string word2, string msg)
 {
-    cout << "Error: " << msg << " (" word1 << ", " << word2 << ")" << endl;
+    cout << "Error: " << msg << " (" << word1 << ", " << word2 << ")" << endl;
     return;
 }
 

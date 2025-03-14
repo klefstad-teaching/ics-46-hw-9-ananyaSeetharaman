@@ -25,7 +25,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         {
             return weight > other.weight;
         }
-    }
+    };
 
     priority_queue<Node, vector<Node>, greater<Node>> pq;
     distance[source] = 0;
