@@ -79,8 +79,8 @@ bool is_adjacent(const string& word1, const string& word2)
     {
         for (int j = 1; j <= m; ++j)
         {
-            char c1 = tolower(str1[i-1]);
-            char c2 = tolower(str2[j-1]);
+            char c1 = tolower(word1[i-1]);
+            char c2 = tolower(word2[j-1]);
 
             if (c1 == c2)
             {
