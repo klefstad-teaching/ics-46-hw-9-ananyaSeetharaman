@@ -157,7 +157,7 @@ void print_word_ladder(const vector<string>& ladder)
 {
     if (ladder.empty())
     {
-        cout << "No ladder found" << endl;
+        cout << "No word ladder found." << endl;
         return;
     }
 
@@ -166,7 +166,7 @@ void print_word_ladder(const vector<string>& ladder)
         cout << ladder[i];
         if (i < ladder.size() - 1)
         {
-            cout << " -> ";
+            cout << " ";
         }
     }
     cout << endl;
@@ -190,11 +190,13 @@ void verify_word_ladder()
     if (begin_word == end_word)
     {
         error(begin_word, end_word, "Start and end words must be different");
+        return;
     }
 
     if (word_list.find(end_word) == word_list.end())
     {
         error(begin_word, end_word, "End word is not in the list");
+        return;
     }
 
     vector<string> ladder = generate_word_ladder(begin_word, end_word, word_list);
