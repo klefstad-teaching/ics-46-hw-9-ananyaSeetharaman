@@ -47,7 +47,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
             }
             else
             {
-                dp[i][j] = min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
+                dp[i][j] = 1 + min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
             }
         }
     }
@@ -88,7 +88,7 @@ bool is_adjacent(const string& word1, const string& word2)
             }
             else
             {
-                dp[i][j] = min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
+                dp[i][j] = 1 + min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
             }
         }
     }
@@ -165,7 +165,7 @@ void print_word_ladder(const vector<string>& ladder)
         cout << ladder[i];
         if (i < ladder.size() - 1)
         {
-            cout << "->";
+            cout << " -> ";
         }
     }
     cout << endl;
