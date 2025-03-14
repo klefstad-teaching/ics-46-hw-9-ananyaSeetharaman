@@ -13,7 +13,7 @@ using namespace std;
 void error(string word1, string word2, string msg)
 {
     cout << "Error: " << msg << " (" << word1 << ", " << word2 << ")" << endl;
-    return;
+    //return;
 }
 
 
@@ -141,6 +141,7 @@ void load_words(set<string> & word_list, const string& file_name)
     if (!file)
     {
         error(file_name, "", "Unable to open file");
+        return;
     }
     string word;
     while (file >> word)
