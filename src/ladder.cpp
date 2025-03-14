@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <algorithm>
+#include <cctype>
 #include "ladder.h"
 
 using namespace std;
