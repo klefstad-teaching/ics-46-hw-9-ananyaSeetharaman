@@ -23,16 +23,16 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     int m = str2.size();
     vector<vector<int>> dp(n + 1, vector<int>(m + 1));
 
-    for (int i = 0; i <= n; ++i) 
-    {
+    for (int i = 0; i <= n; ++i)
+    { 
         dp[i][0] = i;
     }
-    
+
     for (int j = 0; j <= m; ++j) 
     {
         dp[0][j] = j;
     }
-
+        
     for (int i = 1; i <= n; ++i) 
     {
         for (int j = 1; j <= m; ++j) 
@@ -58,9 +58,10 @@ bool is_adjacent(const string& word1, const string& word2)
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list)
 {
+    if (begin_word == end_word) {return {};}
+
     queue<vector<string>> ladder_queue;
     set<string> visited;
-    
     ladder_queue.push({begin_word});
     visited.insert(begin_word);
 
@@ -75,11 +76,11 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         vector<string> neighbors;
 
         string temp = current;
-        for (int i = 0; i < current.size(); ++i) 
+        for (int i = current.size() - 1; i >= 0; --i) 
         {
             char original = temp[i];
-            for (char c = 'a'; c <= 'z'; ++c) 
-            {
+
+            for (char c = 'a'; c <= 'z'; ++c) {
                 if (c == original) {continue;}
                 temp[i] = c;
 
