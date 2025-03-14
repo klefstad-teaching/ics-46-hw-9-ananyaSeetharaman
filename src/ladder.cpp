@@ -175,7 +175,7 @@ void print_word_ladder(const vector<string>& ladder)
 void verify_word_ladder()
 {
     set<string> word_list;
-    load_words(word_list, "/home/agseetha/ics46/HW9/src/small.txt")
+    load_words(word_list, "/home/agseetha/ics46/HW9/src/small.txt");
 
     string begin_word, end_word;
     cout << "Start word: "; 
